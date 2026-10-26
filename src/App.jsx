@@ -3,7 +3,7 @@ import { Sidebar } from "./components/sidebar.jsx"
 import { ListofGifs } from "./components/listGifs"
 import { useGifs } from "./hooks/useGifs.js"
 import { MenuIcon, CloseIcon } from "./components/icons.jsx"
-import "./App.css"
+import "./style.css"
 
 export function App() {
   const [search, setSearch] = useState("")
@@ -43,7 +43,11 @@ export function App() {
   return (
     <>
       <header>
-        <button onClick={ShowMenu} className={showMenu ? "active" : ""}>
+        <button
+          id="sidebar"
+          onClick={ShowMenu}
+          className={showMenu ? "active" : ""}
+        >
           {showMenu ? <CloseIcon /> : <MenuIcon />}
         </button>
         <h1>GIFS</h1>
@@ -68,8 +72,10 @@ export function App() {
       <main>
         <ListofGifs gifs={gifs} favs={favs} addFav={addFav} />
       </main>
-      {allgifs.length > 0 && (
-        <button onClick={LoadmoreGIfs}>Cargas mas..</button>
+      {allgifs.length > 0 && keyword !== "favoritos" && (
+        <button className="btn-more" onClick={LoadmoreGIfs}>
+          Cargas mas..
+        </button>
       )}
     </>
   )

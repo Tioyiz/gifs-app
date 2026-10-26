@@ -1,7 +1,9 @@
+import { FavIcon, UnfavIcon } from "./icons"
+
 export function GifCard({ gif, favs, addFav }) {
   const isFaved = favs.some((fav) => fav.id === gif.id)
 
-  const label = isFaved ? "♥️" : "💔"
+  const label = isFaved ? <FavIcon /> : <UnfavIcon />
 
   return (
     <div>
